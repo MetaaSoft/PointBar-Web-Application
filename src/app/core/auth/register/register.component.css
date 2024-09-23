@@ -1,0 +1,53 @@
+.register-container {
+  display: flex;
+  height: 100vh;
+  background-image: url('https://i.postimg.cc/XvYmw8hH/background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.left-section {
+  flex: 1;
+  padding: 40px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.call-to-action-image {
+  margin-top: 20px;
+  max-width: 50%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 20px;
+  width: 150px;
+}
+
+.full-width {
+  width: 100%;
+}

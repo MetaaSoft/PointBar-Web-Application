@@ -1,0 +1,66 @@
+<div class="register-container">
+  <div class="left-section">
+    <h1>Regístrate en POINTBAR</h1>
+    <p>Empieza a gestionar tu bar de manera eficiente con POINTBAR, la plataforma perfecta para propietarios de bares.</p>
+    <p>Regístrate ahora y personaliza los datos de tu negocio.</p>
+
+    <img src="https://i.postimg.cc/FzdLM26f/homero-logo-transformed.png" alt="Homero Simpson" class="call-to-action-image" />
+  </div>
+
+  <div class="right-section">
+    <div class="register-box">
+      <img src="https://i.postimg.cc/XqSsDcH0/logo-preview.png" alt="Logo POINTBAR" class="logo" />
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- Firstname -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="firstname" placeholder="Ingrese su nombre" required />
+          <mat-error *ngIf="registerForm.get('firstname')?.hasError('pattern')">Nombre inválido (solo letras)</mat-error>
+        </mat-form-field>
+
+        <!-- Lastname -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="lastname" placeholder="Ingrese su apellido" required />
+          <mat-error *ngIf="registerForm.get('lastname')?.hasError('pattern')">Apellido inválido (solo letras)</mat-error>
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Ingrese su correo" type="email" required />
+          <mat-error *ngIf="registerForm.get('email')?.hasError('email')">Correo no válido</mat-error>
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Ingrese su contraseña" required />
+          <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="registerForm.get('password')?.hasError('pattern')">La contraseña debe tener al menos 8 caracteres, con mayúsculas, minúsculas, números y símbolos</mat-error>
+        </mat-form-field>
+
+        <!-- Phone -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Teléfono</mat-label>
+          <input matInput formControlName="phone" placeholder="Ingrese su número de teléfono" type="tel" required />
+          <mat-error *ngIf="registerForm.get('phone')?.hasError('pattern')">El teléfono debe tener 9 dígitos numéricos</mat-error>
+        </mat-form-field>
+
+        <!-- Business Name -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre del Negocio</mat-label>
+          <input matInput formControlName="businessName" placeholder="Nombre del negocio" required />
+          <mat-error *ngIf="registerForm.get('businessName')?.hasError('pattern')">Nombre del negocio no debe tener caracteres especiales</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="registerForm.invalid">
+          Registrarse
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
