@@ -1,42 +1,48 @@
 <div class="config-container">
-  <h2>Configuración del Bar</h2>
+  <div class="config-header">
+    <h2>Configuración del Bar</h2>
+  </div>
 
-  <div class="current-data">
+  <div class="config-data">
     <h3>Datos actuales del negocio</h3>
     <p><strong>Nombre:</strong> {{currentBusinessData.name}}</p>
     <p><strong>Descripción:</strong> {{currentBusinessData.description}}</p>
     <p><strong>Dirección:</strong> {{currentBusinessData.address}}</p>
   </div>
 
-  <form [formGroup]="barForm" (ngSubmit)="onUpdateBar()" class="form-container">
-    <div class="form-group">
-      <label for="businessName">Nombre del Bar</label>
-      <input type="text" id="businessName" formControlName="businessName" placeholder="Nombre del bar" required>
-      <small *ngIf="barForm.get('businessName')?.hasError('pattern')">El nombre no puede contener caracteres especiales.</small>
-    </div>
+  <div class="config-form">
+    <form [formGroup]="barForm" (ngSubmit)="onUpdateBar()" class="form-container">
+      <div class="form-group">
+        <label for="businessName">Nombre del Bar</label>
+        <input type="text" id="businessName" formControlName="businessName" placeholder="Nombre del bar" required>
+        <small *ngIf="barForm.get('businessName')?.hasError('pattern')">El nombre no puede contener caracteres especiales.</small>
+      </div>
 
-    <div class="form-group">
-      <label for="description">Descripción</label>
-      <textarea id="description" formControlName="description" placeholder="Descripción del bar" required></textarea>
-    </div>
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <textarea id="description" formControlName="description" placeholder="Descripción del bar" required></textarea>
+      </div>
 
-    <div class="form-group">
-      <label for="address">Dirección</label>
-      <input type="text" id="address" formControlName="address" placeholder="Dirección del bar" required>
-    </div>
+      <div class="form-group">
+        <label for="address">Dirección</label>
+        <input type="text" id="address" formControlName="address" placeholder="Dirección del bar" required>
+      </div>
 
-    <div class="form-group">
-      <label for="logo">Subir Imagen del Negocio</label>
-      <button type="button" class="upload-btn" (click)="fileInput.click()">Seleccionar Imagen</button>
-      <input type="file" id="logo" #fileInput (change)="onFileSelected($event)" hidden>
-    </div>
+      <div class="form-group">
+        <label for="logo">Subir Imagen del Negocio</label>
+        <button type="button" class="upload-btn" (click)="fileInput.click()">Seleccionar Imagen</button>
+        <input type="file" id="logo" #fileInput (change)="onFileSelected($event)" hidden>
+      </div>
 
-    <div class="form-group" *ngIf="logoUrl">
-      <img [src]="logoUrl" alt="Logo preview" style="max-width: 200px;">
-    </div>
+      <div class="form-group" *ngIf="logoUrl">
+        <img [src]="logoUrl" alt="Logo preview" style="max-width: 200px;">
+      </div>
 
-    <div class="form-group">
-      <button type="submit" class="update-btn" [disabled]="barForm.invalid">Actualizar Información</button>
-    </div>
-  </form>
+      <div class="form-group">
+        <button type="submit" class="update-btn" [disabled]="barForm.invalid">Actualizar Información</button>
+      </div>
+    </form>
+  </div>
 </div>
+
+<app-employees></app-employees>

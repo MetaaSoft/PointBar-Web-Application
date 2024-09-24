@@ -25,12 +25,14 @@ import {RegisterService} from "./core/services/auth/register/register.service";
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { ConfigurationsComponent } from './bar/pages/configurations/configurations.component';
 import { DashboardComponent } from './bar/pages/dashboard/dashboard.component';
-import {MatTable} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
+import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable, MatTableModule} from "@angular/material/table";
+import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {EmployeeService} from "./bar/services/employees/employee.service";
 import {BusinessService} from "./bar/services/business/business.service";
 import {MatGridList, MatGridListModule, MatGridTile} from "@angular/material/grid-list";
 import {AuthInterceptor} from "./shared/services/authinterceptor";
+import { EmployeesComponent } from './bar/pages/employees/employees.component';
+import { EditEmployeesComponent } from './bar/pages/edit-employees/edit-employees.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import {AuthInterceptor} from "./shared/services/authinterceptor";
     SidebarComponent,
     ConfigurationsComponent,
     DashboardComponent,
+    EmployeesComponent,
+    EditEmployeesComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -68,6 +72,12 @@ import {AuthInterceptor} from "./shared/services/authinterceptor";
     MatGridTile,
     MatGridList,
     MatGridListModule,
+    MatHeaderRow,
+    MatRow,
+    MatHeaderCell,
+    MatCell,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [
     LoginService,
