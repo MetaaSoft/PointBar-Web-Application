@@ -1,0 +1,7 @@
+html, body, app-root, mat-drawer-container, mat-drawer-content {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}

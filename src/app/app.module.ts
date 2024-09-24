@@ -15,17 +15,31 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatSelectModule} from "@angular/material/select";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { RegisterComponent } from './core/auth/register/register.component';
+import {LoginService} from "./core/services/auth/login/login.service";
+import {RegisterService} from "./core/services/auth/register/register.service";
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { ConfigurationsComponent } from './bar/pages/configurations/configurations.component';
+import { DashboardComponent } from './bar/pages/dashboard/dashboard.component';
+import {MatTable} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import {EmployeeService} from "./bar/services/employees/employee.service";
+import {BusinessService} from "./bar/services/business/business.service";
+import {MatGridList, MatGridListModule, MatGridTile} from "@angular/material/grid-list";
+import {AuthInterceptor} from "./shared/services/authinterceptor";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidebarComponent,
+    ConfigurationsComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -49,8 +63,23 @@ import { RegisterComponent } from './core/auth/register/register.component';
     MatFormField,
     MatIcon,
     CommonModule,
+    MatTable,
+    MatPaginator,
+    MatGridTile,
+    MatGridList,
+    MatGridListModule,
   ],
-  providers: [],
+  providers: [
+    LoginService,
+    RegisterService,
+    EmployeeService,
+    BusinessService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
