@@ -33,6 +33,8 @@ import {MatGridList, MatGridListModule, MatGridTile} from "@angular/material/gri
 import {AuthInterceptor} from "./shared/services/authinterceptor";
 import { EmployeesComponent } from './bar/pages/employees/employees.component';
 import { EditEmployeesComponent } from './bar/pages/edit-employees/edit-employees.component';
+import { TableManagementComponent } from './bar/pages/table-management/table-management.component';
+import {TableService} from "./bar/services/tables/table.service";
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { EditEmployeesComponent } from './bar/pages/edit-employees/edit-employee
     DashboardComponent,
     EmployeesComponent,
     EditEmployeesComponent,
+    TableManagementComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -84,6 +87,7 @@ import { EditEmployeesComponent } from './bar/pages/edit-employees/edit-employee
     RegisterService,
     EmployeeService,
     BusinessService,
+    TableService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

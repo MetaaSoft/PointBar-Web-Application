@@ -1,0 +1,118 @@
+.table-space-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2, h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 220px;
+  margin-right: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.upload-btn {
+  padding: 10px 15px;
+  margin-top: 10px;
+  background-color: #5c5c5c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-btn {
+  padding: 12px 20px;
+  background-color: #757de8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.register-btn:hover {
+  background-color: #303f9f;
+}
+
+table {
+  width: 91%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+thead tr {
+  background-color: #f2f2f2;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #3f51b5;
+  color: white;
+}
+
+td img {
+  border-radius: 5px;
+  max-width: 80px;
+}
+
+td button {
+  padding: 8px 12px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 5px;
+}
+
+td button:hover {
+  background-color: #e64a19;
+}
+
+.mat-paginator {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

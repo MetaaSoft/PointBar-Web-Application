@@ -1,12 +1,12 @@
 .sidebar-container {
   height: 100vh;
   width: 18vw;
-  border-top-right-radius: 5px;
+  border-top-right-radius: 2px;
   background-color: #003f8f;
 }
 
 .sidebar {
-  width: 250px;
+  width: 270px;
   background-color: #003f8f;
   color: #FFFFFF;
 }

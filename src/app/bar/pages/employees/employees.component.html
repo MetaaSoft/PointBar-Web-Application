@@ -22,10 +22,10 @@
       <mat-label>Teléfono</mat-label>
       <input matInput formControlName="phone">
     </mat-form-field>
-    <button mat-raised-button type="submit">Registrar empleado</button>
+    <button mat-raised-button class = "register-btn" type="submit">Registrar empleado</button>
   </form>
 
-  <table mat-table [dataSource]="employees" class="mat-elevation-z8">
+  <table mat-table [dataSource]="employees" class="table-paginator mat-elevation-z8">
 
     <!-- Definir las columnas -->
     <ng-container matColumnDef="firstname">

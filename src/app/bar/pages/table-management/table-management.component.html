@@ -1,0 +1,52 @@
+<div class="table-space-container">
+  <h2>Gestión de Mesas</h2>
+  <form class="form-container" [formGroup]="tableSpaceForm" (ngSubmit)="onSubmitTableSpace()">
+    <div class="form-group">
+      <label for="name">Nombre del Espacio</label>
+      <input type="text" id="name" placeholder="Ingrese el nombre del espacio" formControlName="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="numberOfTables">Cantidad de Mesas</label>
+      <input type="number" id="numberOfTables" placeholder="Cantidad de mesas" formControlName="numberOfTables" min="1" required>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Subir Imagen del Espacio (Opcional)</label>
+      <button type="button" class="upload-btn" (click)="fileInput.click()">Seleccionar Imagen</button>
+      <input type="file" id="image" #fileInput (change)="onFileSelected($event)" hidden>
+    </div>
+
+    <div class="form-group" *ngIf="imageUrl">
+      <img [src]="imageUrl" alt="Vista previa del espacio" style="max-width: 200px;">
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="register-btn" [disabled]="tableSpaceForm.invalid">Registrar Espacio</button>
+    </div>
+  </form>
+
+  <h3>Espacios Registrados</h3>
+  <table class="mat-elevation-z8">
+    <thead>
+    <tr>
+      <th>Nombre del Espacio</th>
+      <th>Cantidad de Mesas</th>
+      <th>Imagen</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let space of tableSpaces">
+      <td>{{ space.name }}</td>
+      <td>{{ space.numberOfTables }}</td>
+      <td><img [src]="space.imageUrl" alt="Imagen del espacio" style="max-width: 80px;"></td>
+      <td>
+        <button (click)="editTableSpace(space)">Editar</button>
+        <button (click)="deleteTableSpace(space.id)">Eliminar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <mat-paginator [length]="tableSpacesLength" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+</div>

@@ -66,7 +66,7 @@ small {
 }
 
 .upload-btn {
-  background-color: #757de8;
+  background-color: #5c5c5c;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -76,14 +76,19 @@ small {
 }
 
 .update-btn {
-  background-color: #3f51b5;
-  color: white;
+  background-color: #cccccc;
+  color: #333333;
   padding: 12px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: bold;
   width: 100%;
+}
+
+.update-btn:hover {
+  background-color: #757de8;
 }
 
 .update-btn[disabled] {
