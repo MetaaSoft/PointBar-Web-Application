@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RegisterRequest} from "../../services/auth/register/registerrequest";
 import {RegisterService} from "../../services/auth/register/register.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit{
   registerForm: FormGroup;
   hidePassword = true;
 
-  constructor(private fb: FormBuilder, private registerService: RegisterService) {
+  constructor(private fb: FormBuilder, private registerService: RegisterService, private router: Router) {
     this.registerForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       lastname: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
@@ -36,6 +37,7 @@ export class RegisterComponent implements OnInit{
       };
       this.registerService.registerUser(request).subscribe(response => {
         console.log('Registro Exitoso:', response);
+        this.router.navigate(['/login']);
       }, error => {
         console.error('Error al registrar:', error);
       });

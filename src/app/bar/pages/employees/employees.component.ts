@@ -34,6 +34,7 @@ export class EmployeesComponent implements  OnInit{
       this.employeeService.addEmployee(employeeData).subscribe(response => {
         console.log('Empleado registrado con éxito');
         this.loadEmployees();
+        this.employeeForm.reset();  // Limpiar el formulario después del registro
       }, error => {
         console.error('Error registrando empleado', error);
       });
@@ -43,7 +44,7 @@ export class EmployeesComponent implements  OnInit{
   loadEmployees(): void {
     this.employeeService.getEmployees().subscribe(response => {
       console.log('Datos recuperados del endpoint:', response);
-      this.employees = response.data;  // Asegúrate de acceder a response.data
+      this.employees = response.data.filter(employee => employee.active);
       this.employeesLength = this.employees.length;
     }, error => {
       console.error('Error cargando empleados', error);

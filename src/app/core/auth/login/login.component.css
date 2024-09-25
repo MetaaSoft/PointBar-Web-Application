@@ -1,7 +1,7 @@
 .login-container {
   display: flex;
   height: 100vh;
-  background-image: url('https://i.postimg.cc/XvYmw8hH/background.jpg');
+  background-image: url('https://i.postimg.cc/WpKjhFZx/background2.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -10,19 +10,30 @@
   flex: 1;
   padding: 40px;
   color: white;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);  /* Fondo más oscuro para mejor contraste */
   display: flex;
-  flex-direction: column;  /* Organizar el contenido en una columna */
-  justify-content: center;  /* Centrar el contenido verticalmente */
-  align-items: center;      /* Centrar el contenido horizontalmente */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.left-section h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+.left-section p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
 .call-to-action-image {
   margin-top: 20px;
-  max-width: 50%;
+  max-width: 55%;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
 .right-section {
@@ -35,20 +46,41 @@
 .login-box {
   width: 100%;
   max-width: 400px;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.75);  /* Fondo más transparente */
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.login-box:hover {
+  transform: translateY(-10px);
 }
 
 .logo {
   display: block;
   margin: 0 auto 20px;
-  width: 150px;
+  width: 140px;
+  height: auto;
 }
 
 .full-width {
   width: 100%;
+}
+
+.mat-form-field {
+  margin-bottom: 16px;
+}
+
+.login-btn {
+  background-color: #3f51b5;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #303f9f;
 }
 
 .actions {
@@ -58,8 +90,9 @@
 }
 
 .actions a {
-  text-decoration: none;
   color: #3f51b5;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .actions a:hover {

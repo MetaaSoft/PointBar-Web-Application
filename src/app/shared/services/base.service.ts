@@ -9,13 +9,11 @@ import {catchError, Observable, retry, throwError} from "rxjs";
 
 export class BaseService<T> {
   basePath: string = `${environment.serverBasePath}`;
-  //resourceEndpoint: string = '/auth/admin';
   resourceEndpoint: string = '';
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      //'Authorization': `Bearer ${localStorage.getItem('token')}`
     })
   };
 
