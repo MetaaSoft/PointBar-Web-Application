@@ -6,6 +6,7 @@ import {SidebarComponent} from "./shared/components/sidebar/sidebar.component";
 import {ConfigurationsComponent} from "./bar/pages/configurations/configurations.component";
 import {DashboardComponent} from "./bar/pages/dashboard/dashboard.component";
 import {TableManagementComponent} from "./bar/pages/table-management/table-management.component";
+import {BeverageComponent} from "./bar/pages/beverage/beverage.component";
 
 const routes: Routes = [
   {
@@ -29,15 +30,21 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-    path: "configurations",
-    title: "Configurations",
-    component: ConfigurationsComponent
+    path: "beverage",
+    title: "Beverage Management",
+    component: BeverageComponent
   },
   {
     path: "tables",
     title: "Table Management",
     component: TableManagementComponent
   },
+  {
+    path: "configurations",
+    title: "Configurations",
+    component: ConfigurationsComponent
+  },
+
 
 ];
 

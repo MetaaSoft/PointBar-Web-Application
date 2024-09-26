@@ -1,0 +1,11 @@
+<mat-dialog-content>
+  <h2>{{ data.category ? 'Editar Categoría' : 'Registrar Categoría' }}</h2>
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmitCategory()">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <button mat-raised-button type="submit">{{ data.category ? 'Actualizar Categoría' : 'Registrar Categoría' }}</button>
+    <button mat-raised-button type="button" (click)="dialogRef.close()">Cancelar</button>
+  </form>
+</mat-dialog-content>

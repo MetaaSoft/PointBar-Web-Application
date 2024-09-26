@@ -1,0 +1,28 @@
+.beverage-management-container {
+  padding: 20px;
+}
+
+mat-table {
+  width: 100%;
+}
+
+mat-header-cell, mat-cell {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+mat-header-cell {
+  background-color: #f0f0f0;
+}
+
+mat-row {
+  cursor: pointer;
+}
+
+mat-row:hover {
+  background-color: #f9f9f9;
+}
+
+mat-paginator {
+  margin-top: 20px;
+}

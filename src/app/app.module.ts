@@ -35,6 +35,11 @@ import { EmployeesComponent } from './bar/pages/employees/employees.component';
 import { EditEmployeesComponent } from './bar/pages/edit-employees/edit-employees.component';
 import { TableManagementComponent } from './bar/pages/table-management/table-management.component';
 import {TableService} from "./bar/services/tables/table.service";
+import { BeverageComponent } from './bar/pages/beverage/beverage.component';
+import {BeverageService} from "./bar/services/beverage/beverage.service";
+import {CategoriesService} from "./bar/services/categories/categories.service";
+import { BeveragedialogComponent } from './bar/pages/beverage/beveragedialog/beveragedialog.component';
+import { CategorydialogComponent } from './bar/pages/beverage/categorydialog/categorydialog.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,9 @@ import {TableService} from "./bar/services/tables/table.service";
     EmployeesComponent,
     EditEmployeesComponent,
     TableManagementComponent,
+    BeverageComponent,
+    BeveragedialogComponent,
+    CategorydialogComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -88,6 +96,8 @@ import {TableService} from "./bar/services/tables/table.service";
     EmployeeService,
     BusinessService,
     TableService,
+    BeverageService,
+    CategoriesService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

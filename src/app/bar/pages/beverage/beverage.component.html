@@ -1,0 +1,47 @@
+<div class="beverage-management-container">
+  <h2>Gestión de Bebidas</h2>
+
+  <!-- Botón para registrar bebida -->
+  <button mat-raised-button (click)="openBeverageDialog()">Registrar Bebida</button>
+
+  <!-- Tabla de bebidas registradas -->
+  <mat-table [dataSource]="beverages" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+      <mat-cell *matCellDef="let beverage">{{ beverage.name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Descripción</mat-header-cell>
+      <mat-cell *matCellDef="let beverage">{{ beverage.description }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="categoryName">
+      <mat-header-cell *matHeaderCellDef>Categoría</mat-header-cell>
+      <mat-cell *matCellDef="let beverage">{{ beverage.categoryName }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+      <mat-cell *matCellDef="let beverage">{{ beverage.price }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+      <mat-cell *matCellDef="let beverage">
+        <button mat-raised-button (click)="openBeverageDialog(beverage)">Editar</button>
+        <button mat-raised-button (click)="deleteBeverage(beverage.id)">Eliminar</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['name', 'description', 'categoryName', 'price', 'actions']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'description', 'categoryName', 'price', 'actions']"></mat-row>
+  </mat-table>
+
+  <!-- Sección de categorías -->
+  <h3>Categorías</h3>
+  <div>
+    <button mat-raised-button (click)="openCategoryDialog()">Agregar Categoría</button>
+    <p *ngFor="let category of categories">{{ category.name }}</p>
+  </div>
+</div>
