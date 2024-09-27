@@ -1,0 +1,18 @@
+<div class="table-space-container">
+  <h2>Registrar Nueva Venta</h2>
+
+  <div class="spaces-grid">
+    <mat-card *ngFor="let space of tableSpaces" class="space-card">
+      <img mat-card-image [src]="space.imageUrl" alt="Espacio de mesas">
+      <mat-card-header>
+        <mat-card-title>{{ space.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Mesas: {{ space.numberOfTables }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="viewTables(space.id, space.name, space.numberOfTables)">VER MESAS</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

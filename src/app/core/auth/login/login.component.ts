@@ -21,6 +21,7 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
+    localStorage.removeItem('token');
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       const request: LoginRequest = { email, password };

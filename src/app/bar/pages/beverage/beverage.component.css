@@ -1,18 +1,12 @@
 .beverage-management-container {
   padding: 20px;
 }
-
 mat-table {
-  width: 100%;
+  width: 95%;
 }
 
 mat-header-cell, mat-cell {
   padding: 10px;
-  border: 1px solid #ccc;
-}
-
-mat-header-cell {
-  background-color: #f0f0f0;
 }
 
 mat-row {
@@ -25,4 +19,35 @@ mat-row:hover {
 
 mat-paginator {
   margin-top: 20px;
+}
+
+div button {
+  margin-bottom: 30px;
+  color: white;
+  background: #3f51b5;
+  border-radius: 10px;
+}
+
+div button:hover {
+  background: #757de8;
+}
+
+mat-cell button {
+  background: #FFFFFF;
+  margin-right: 10px;
+}
+
+.mat-icon{
+  color: #333333;
+}
+
+div div button {
+  margin-bottom: 30px;
+  color: white;
+  background: #3f51b5;
+  border-radius: 10px;
+}
+
+div div button:hover {
+  background: #757de8;
 }

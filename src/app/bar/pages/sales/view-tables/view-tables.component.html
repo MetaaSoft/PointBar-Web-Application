@@ -1,0 +1,24 @@
+<div class="tables-container">
+  <h2>{{ spaceName }} - Mesas</h2>
+
+  <!-- Botón de regreso -->
+  <div class="back-button">
+    <button mat-raised-button class="back-btn" color="primary" (click)="goBack()">
+      Regresar
+    </button>
+  </div>
+
+  <div class="tables-grid">
+    <mat-card *ngFor="let table of tables; let i = index" class="table-card" [ngClass]="{ 'table-occupied': table.occupied, 'table-free': !table.occupied }">
+      <img mat-card-image [src]="spaceImageUrl" alt="Mesa">
+      <mat-card-header>
+        <mat-card-title>Mesa {{ i + 1 }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <button mat-raised-button class="card-btn" (click)="toggleOccupied(i)">
+          {{ table.occupied ? 'Ocupada' : 'Atender' }}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

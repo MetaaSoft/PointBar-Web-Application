@@ -1,0 +1,42 @@
+.tables-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.table-card {
+  width: 210px;
+}
+
+.table-free {
+  background-color: lightgreen !important; /* Sobrescribe el fondo de mesa libre */
+}
+
+.table-occupied {
+  background-color: lightcoral !important; /* Sobrescribe el fondo de mesa ocupada */
+}
+
+/* Estilo para el botón de regreso */
+.back-button {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.back-btn {
+  width: auto;
+  background-color: #333333 !important; /* Sobrescribe el color de fondo */
+  color: #FFFFFF !important; /* Sobrescribe el color del texto */
+}
+
+/* Estilo para los botones dentro de las cards */
+.card-btn {
+  width: 100%;
+  background-color: #333333 !important; /* Color personalizado del botón */
+  color: #FFFFFF !important; /* Color personalizado del texto */
+}
+
+/* Estilo para el botón cuando está ocupado */
+.card-btn.occupied {
+  background-color: red !important;
+  color: white !important;
+}

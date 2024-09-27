@@ -1,0 +1,21 @@
+.spaces-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.space-card {
+  width: 250px;
+  text-align: center;
+}
+
+div .mat-card-title {
+  font-weight: bolder;
+  align-content: center;
+}
+
+div button {
+  width: 100%;
+  background: #757de8;
+  color: #FFFFFF;
+}

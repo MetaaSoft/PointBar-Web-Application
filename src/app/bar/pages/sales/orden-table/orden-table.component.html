@@ -1,0 +1,72 @@
+<div class="mesa-detalle-container">
+  <h2>Mesa {{ mesaId }}</h2>
+  <mat-table [dataSource]="orders" class="mat-elevation-z8">
+    <!-- columnas de la tabla -->
+    <ng-container matColumnDef="beverage">
+      <mat-header-cell *matHeaderCellDef> Bebida </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{ order.beverage.name }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+      <mat-cell *matCellDef="let order">
+        <button mat-icon-button (click)="decrementQuantity(order)">
+          <mat-icon>remove</mat-icon>
+        </button>
+        {{ order.quantity }}
+        <button mat-icon-button (click)="incrementQuantity(order)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{ order.beverage.price }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="subtotal">
+      <mat-header-cell *matHeaderCellDef> Subtotal </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{ order.quantity * order.beverage.price }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delivered">
+      <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+      <mat-cell *matCellDef="let order">
+        <mat-icon *ngIf="order.delivered" color="primary">check_circle</mat-icon>
+        <mat-icon *ngIf="!order.delivered" color="warn">cancel</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+      <mat-cell *matCellDef="let order">
+        <button mat-icon-button (click)="deleteOrder(order)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['beverage', 'quantity', 'price', 'subtotal', 'delivered', 'actions']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['beverage', 'quantity', 'price', 'subtotal', 'delivered', 'actions']"></mat-row>
+  </mat-table>
+  <!-- paginación -->
+  <mat-paginator [length]="orders.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+</div>
+
+<button mat-raised-button (click)="openAgregarPedidoDialog()">Agregar Pedido</button>
+
+<ng-container matColumnDef="total">
+  <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+  <mat-cell *matCellDef="let order"> {{ order.total }} </mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="actions">
+  <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+  <mat-cell *matCellDef="let order">
+    <button mat-icon-button (click)="closeOrder(order)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-cell>
+</ng-container>
+

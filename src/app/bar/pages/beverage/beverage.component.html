@@ -2,7 +2,7 @@
   <h2>Gestión de Bebidas</h2>
 
   <!-- Botón para registrar bebida -->
-  <button mat-raised-button (click)="openBeverageDialog()">Registrar Bebida</button>
+  <button mat-raised-button class="register-btn" (click)="openBeverageDialog()">Registrar Bebida</button>
 
   <!-- Tabla de bebidas registradas -->
   <mat-table [dataSource]="beverages" class="mat-elevation-z8">
@@ -29,8 +29,12 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
       <mat-cell *matCellDef="let beverage">
-        <button mat-raised-button (click)="openBeverageDialog(beverage)">Editar</button>
-        <button mat-raised-button (click)="deleteBeverage(beverage.id)">Eliminar</button>
+        <button mat-raised-button (click)="openBeverageDialog(beverage)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-raised-button (click)="deleteBeverage(beverage.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-cell>
     </ng-container>
 

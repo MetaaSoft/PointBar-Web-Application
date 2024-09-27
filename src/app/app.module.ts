@@ -40,6 +40,13 @@ import {BeverageService} from "./bar/services/beverage/beverage.service";
 import {CategoriesService} from "./bar/services/categories/categories.service";
 import { BeveragedialogComponent } from './bar/pages/beverage/beveragedialog/beveragedialog.component';
 import { CategorydialogComponent } from './bar/pages/beverage/categorydialog/categorydialog.component';
+import { SalesComponent } from './bar/pages/sales/sales.component';
+import { ViewTablesComponent } from './bar/pages/sales/view-tables/view-tables.component';
+import { OrdenTableComponent } from './bar/pages/sales/orden-table/orden-table.component';
+import {OrdersService} from "./bar/services/sales/orders.service";
+import {MatChip} from "@angular/material/chips";
+import { BeveragesTableComponent } from './bar/pages/sales/beverages-table/beverages-table.component';
+import {BeverageselectedService} from "./bar/services/beverageselected/beverageselected.service";
 
 @NgModule({
   declarations: [
@@ -55,6 +62,10 @@ import { CategorydialogComponent } from './bar/pages/beverage/categorydialog/cat
     BeverageComponent,
     BeveragedialogComponent,
     CategorydialogComponent,
+    SalesComponent,
+    ViewTablesComponent,
+    OrdenTableComponent,
+    BeveragesTableComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -89,6 +100,7 @@ import { CategorydialogComponent } from './bar/pages/beverage/categorydialog/cat
     MatCell,
     MatTableModule,
     MatPaginatorModule,
+    MatChip,
   ],
   providers: [
     LoginService,
@@ -98,6 +110,8 @@ import { CategorydialogComponent } from './bar/pages/beverage/categorydialog/cat
     TableService,
     BeverageService,
     CategoriesService,
+    OrdersService,
+    BeverageselectedService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

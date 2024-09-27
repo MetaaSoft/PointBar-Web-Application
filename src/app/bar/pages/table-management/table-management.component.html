@@ -42,8 +42,12 @@
       <td>{{ space.numberOfTables }}</td>
       <td><img [src]="space.imageUrl" alt="Imagen del espacio" style="max-width: 80px;"></td>
       <td>
-        <button (click)="editTableSpace(space)">Editar</button>
-        <button (click)="deleteTableSpace(space.id)">Eliminar</button>
+        <button (click)="editTableSpace(space)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="deleteTableSpace(space.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </td>
     </tr>
     </tbody>

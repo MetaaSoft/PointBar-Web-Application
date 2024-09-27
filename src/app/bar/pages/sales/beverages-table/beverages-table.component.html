@@ -1,0 +1,34 @@
+<div class="agregar-pedido-container">
+  <h2>Agregar Pedido</h2>
+  <mat-table [dataSource]="beverages" class="mat-elevation-z8">
+    <!-- columnas de la tabla -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let beverage"> {{ beverage.name }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="categoryName">
+      <mat-header-cell *matHeaderCellDef> Categoría </mat-header-cell>
+      <mat-cell *matCellDef="let beverage"> {{ beverage.categoryName }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+      <mat-cell *matCellDef="let beverage"> {{ beverage.price }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+      <mat-cell *matCellDef="let beverage">
+        <button mat-icon-button (click)="agregarPedido(beverage)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['name', 'categoryName', 'price', 'actions']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'categoryName', 'price', 'actions']"></mat-row>
+  </mat-table>
+  <!-- paginación -->
+  <mat-paginator [length]="beverages.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+</div>
