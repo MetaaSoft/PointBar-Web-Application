@@ -1,7 +1,6 @@
 <div class="employee-section">
   <h2>Registro de empleados</h2>
   <form [formGroup]="employeeForm" (ngSubmit)="onSubmitEmployee()" class="form-container">
-    <!-- Formulario de registro de empleado -->
     <mat-form-field>
       <mat-label>Nombre</mat-label>
       <input matInput formControlName="firstname">
@@ -27,7 +26,6 @@
 
   <table mat-table [dataSource]="employees" class="table-paginator mat-elevation-z8">
 
-    <!-- Definir las columnas -->
     <ng-container matColumnDef="firstname">
       <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
       <mat-cell *matCellDef="let employee">{{ employee.firstname }}</mat-cell>
@@ -60,9 +58,7 @@
       </mat-cell>
     </ng-container>
 
-    <!-- Cabecera de la tabla -->
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <!-- Filas de la tabla -->
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
 

@@ -14,7 +14,7 @@ export class TableManagementComponent implements OnInit{
   tableSpacesLength: number = 0;
   imageFile: File | null = null;
   imageUrl: string | null = null;
-  editingSpaceId: number | null = null; // ID para gestionar el modo de edición
+  editingSpaceId: number | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -30,7 +30,6 @@ export class TableManagementComponent implements OnInit{
     this.loadTableSpaces();
   }
 
-  // Cargar espacios de mesas desde el backend
   loadTableSpaces(): void {
     this.tableSpaceService.getTableSpaces().subscribe(
       response => {
@@ -48,7 +47,6 @@ export class TableManagementComponent implements OnInit{
     );
   }
 
-  // Seleccionar archivo de imagen
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
@@ -59,7 +57,6 @@ export class TableManagementComponent implements OnInit{
     }
   }
 
-  // Registrar nuevo espacio de mesas
   onSubmitTableSpace(): void {
     if (this.tableSpaceForm.valid) {
       const formData = new FormData();
@@ -86,7 +83,6 @@ export class TableManagementComponent implements OnInit{
     }
   }
 
-  // Editar espacio de mesas
   editTableSpace(space: TableSpaceResponse): void {
     this.tableSpaceForm.patchValue({
       name: space.name,
@@ -96,7 +92,6 @@ export class TableManagementComponent implements OnInit{
     this.editingSpaceId = space.id;
   }
 
-  // Actualizar espacio de mesas
   updateTableSpace(formData: FormData): void {
     if (this.editingSpaceId !== null) {
       this.tableSpaceService.updateTableSpace(this.editingSpaceId, formData).subscribe(
@@ -112,7 +107,6 @@ export class TableManagementComponent implements OnInit{
     }
   }
 
-  // Eliminar espacio de mesas
   deleteTableSpace(id: number): void {
     this.tableSpaceService.deleteTableSpace(id).subscribe(response => {
       console.log('Espacio de mesa eliminado exitosamente:', response);
@@ -122,7 +116,6 @@ export class TableManagementComponent implements OnInit{
     });
   }
 
-  // Reiniciar el formulario tras registrar o actualizar un espacio
   resetForm(): void {
     this.tableSpaceForm.reset();
     this.imageFile = null;

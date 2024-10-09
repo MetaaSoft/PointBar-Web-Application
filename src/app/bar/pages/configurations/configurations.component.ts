@@ -30,10 +30,9 @@ export class ConfigurationsComponent implements OnInit{
     this.loadBusinessData();
   }
 
-  // Cargar datos del negocio desde el backend
   loadBusinessData(): void {
     this.businessService.getBusinessConfig().subscribe(response => {
-      const data = response.data;  // Asegúrate de acceder a la propiedad 'data' del response
+      const data = response.data;
       this.currentBusinessData = {
         name: data.name,
         description: data.description,
@@ -53,12 +52,10 @@ export class ConfigurationsComponent implements OnInit{
     });
   }
 
-  // Manejar la selección de archivo
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
       this.logoFile = file;
-      // Mostrar una vista previa de la imagen
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.logoUrl = e.target.result;
@@ -67,7 +64,6 @@ export class ConfigurationsComponent implements OnInit{
     }
   }
 
-  // Enviar el formulario para actualizar los datos del negocio
   onUpdateBar(): void {
     if (this.barForm.valid) {
       const formData = new FormData();
@@ -75,7 +71,6 @@ export class ConfigurationsComponent implements OnInit{
       formData.append('description', this.barForm.get('description')?.value);
       formData.append('address', this.barForm.get('address')?.value);
 
-      // Añadir el archivo del logo si fue seleccionado
       if (this.logoFile) {
         formData.append('logo', this.logoFile);
       }
@@ -84,7 +79,6 @@ export class ConfigurationsComponent implements OnInit{
         console.log('Business updated successfully');
         this.loadBusinessData();
 
-        // Notificar al sidebar para que se actualice
         this.sidebarService.updateSidebar();
       }, error => {
         console.error('Error updating business', error);

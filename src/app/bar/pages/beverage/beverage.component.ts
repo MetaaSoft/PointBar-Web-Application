@@ -93,10 +93,6 @@ export class BeverageComponent implements OnInit{
     );
   }
 
-
-
-
-
   createBeverage(formData: FormData): void {
     this.beverageService.addBeverage(formData).subscribe(
       response => {
@@ -137,17 +133,12 @@ export class BeverageComponent implements OnInit{
     );
   }
 
-
-
   resetBeverageForm(): void {
     this.beverageForm.reset();
     this.imageFile = null;
     this.imageUrl = null;
     this.editingBeverageId = null;
   }
-
-
-
 
   createCategory(category: CategoryRequest): void {
     this.categoryService.addCategory(category).subscribe(
@@ -174,10 +165,6 @@ export class BeverageComponent implements OnInit{
       );
     }
   }
-
-
-
-
 
   openBeverageDialog(beverage?: BeverageResponse): void {
     const dialogRef = this.dialog.open(BeveragedialogComponent, {

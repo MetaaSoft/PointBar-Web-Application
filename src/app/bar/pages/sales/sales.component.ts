@@ -25,7 +25,7 @@ export class SalesComponent implements OnInit{
     });
   }
 
-  viewTables(id: number, name: string, numberOfTables: number): void {
-    this.router.navigate(['/view-tables', { id, name, numberOfTables }]);
+  viewTables(space: TableSpaceResponse): void {
+    this.router.navigate(['/view-tables', { id: space.id, name: space.name, numberOfTables: space.numberOfTables }]);
   }
 }

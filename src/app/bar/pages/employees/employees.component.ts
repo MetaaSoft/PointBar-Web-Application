@@ -34,7 +34,7 @@ export class EmployeesComponent implements  OnInit{
       this.employeeService.addEmployee(employeeData).subscribe(response => {
         console.log('Empleado registrado con éxito');
         this.loadEmployees();
-        this.employeeForm.reset();  // Limpiar el formulario después del registro
+        this.employeeForm.reset();
       }, error => {
         console.error('Error registrando empleado', error);
       });

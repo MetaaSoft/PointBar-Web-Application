@@ -31,15 +31,10 @@ export class BeveragesTableComponent implements OnInit, AfterViewInit {
 
   // Obtener las bebidas del servicio
   getBeverages(): void {
-    this.beverageService.getBeverages().subscribe(
-      (response: any) => {
-        this.beverages = response.data;
-        this.dataSource.data = this.beverages;
-      },
-      (error) => {
-        console.error('Error al obtener las bebidas:', error);
-      }
-    );
+    this.beverageService.getBeverages().subscribe((response: any) => {
+      this.beverages = response.data;
+      this.dataSource.data = this.beverages;
+    });
   }
 
   // Seleccionar una bebida y enviarla al componente principal

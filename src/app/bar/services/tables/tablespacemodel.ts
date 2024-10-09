@@ -7,7 +7,7 @@ export interface ApiResponse<T> {
 export interface TableSpaceRequest {
   name: string;
   numberOfTables: number;
-  image?: File;  // Opcional ya que la imagen puede no enviarse
+  image?: File;
 }
 
 export interface TableSpaceResponse {

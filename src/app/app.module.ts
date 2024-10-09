@@ -47,6 +47,7 @@ import {OrdersService} from "./bar/services/sales/orders.service";
 import {MatChip} from "@angular/material/chips";
 import { BeveragesTableComponent } from './bar/pages/sales/beverages-table/beverages-table.component';
 import {BeverageselectedService} from "./bar/services/beverageselected/beverageselected.service";
+import { CollectMoneyDialogComponent } from './bar/pages/sales/collect-money-dialog/collect-money-dialog.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import {BeverageselectedService} from "./bar/services/beverageselected/beverages
     ViewTablesComponent,
     OrdenTableComponent,
     BeveragesTableComponent,
+    CollectMoneyDialogComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -118,6 +120,6 @@ import {BeverageselectedService} from "./bar/services/beverageselected/beverages
       multi: true
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

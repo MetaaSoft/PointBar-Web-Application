@@ -11,7 +11,6 @@ export class AppComponent {
 
   constructor(public router: Router) {}
 
-  // Condición para ocultar el sidebar en las rutas de login y register
   shouldShowSidebar(): boolean {
     return this.router.url !== '/login' && this.router.url !== '/register';
   }

@@ -4,11 +4,10 @@
   </mat-drawer>
 
   <mat-drawer-content>
-    <router-outlet></router-outlet> <!-- Aquí se carga el componente de configuraciones -->
+    <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
 
-<!-- Cuando el sidebar no se muestra, solo se carga el router-outlet -->
 <div *ngIf="!shouldShowSidebar()">
-  <router-outlet></router-outlet> <!-- Para Login y Register -->
+  <router-outlet></router-outlet>
 </div>

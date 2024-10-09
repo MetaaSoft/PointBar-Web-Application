@@ -43,7 +43,7 @@ const routes: Routes = [
     component: ViewTablesComponent
   },
   {
-    path: "order-tables/:mesaId",
+    path: "order-tables",
     title: "Order Tables",
     component: OrdenTableComponent
   },

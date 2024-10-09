@@ -5,7 +5,6 @@ import {Subject} from "rxjs";
   providedIn: 'root'
 })
 export class BeverageselectedService {
-
   private beverageSelectedSource = new Subject<any>();
   beverageSelected$ = this.beverageSelectedSource.asObservable();
 

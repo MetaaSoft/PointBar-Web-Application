@@ -5,10 +5,8 @@ import {Observable} from "rxjs";
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Obtener el token desde localStorage o sessionStorage
+    //Obtiene el token desde localStorage
     const token = localStorage.getItem('token');
-
-    // Si el token existe, clona la solicitud y agrega el encabezado Authorization
     if (token) {
       const cloned = req.clone({
         headers: req.headers.set('Authorization', `Bearer ${token}`)

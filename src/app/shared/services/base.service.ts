@@ -32,11 +32,9 @@ export class BaseService<T> {
     if (error.error instanceof ErrorEvent) {
       console.error(`An error occurred: ${error.error.message}`);
     } else {
-      // Unsuccesful response error code returned from backend
       console.log(`Backend returned code ${error.status}, body was ${error.error}`);
       console.error('Full error object:', error); // Log the entire error object for more details
     }
-    // Return an observable with a user-facing error message
     return throwError(() => new Error('Something happened with request, please try again later.'));
   }
 

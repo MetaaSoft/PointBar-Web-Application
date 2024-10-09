@@ -42,7 +42,6 @@ export class RegisterComponent implements OnInit{
         console.error('Error al registrar:', error);
       });
 
-      // Limpiar datos de sesión si los hay
       localStorage.removeItem('token');
     }
   }

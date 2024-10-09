@@ -7,7 +7,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrl: './view-tables.component.css'
 })
 export class ViewTablesComponent implements  OnInit{
-  spaceId!: number;
+  spaceId!: number; // ID del espacio de mesas (TableSpace)
   spaceName!: string;
   numberOfTables!: number;
   spaceImageUrl!: string;
@@ -17,23 +17,20 @@ export class ViewTablesComponent implements  OnInit{
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.spaceId = +params['id'];
+      this.spaceId = +params['id']; // Obtenemos el ID del espacio
       this.spaceName = params['name'];
       this.numberOfTables = +params['numberOfTables'];
       this.spaceImageUrl = 'https://i.postimg.cc/2yVKPSm4/mesa-venta-removebg-preview.png';
-
       this.tables = Array(this.numberOfTables).fill({ occupied: false });
     });
   }
 
-  toggleOccupied(index: number): void {
-    this.tables[index].occupied = !this.tables[index].occupied;
-    if (this.tables[index].occupied) {
-      this.router.navigate(['/order-tables/:mesaId', { mesaId: index + 1 }]);
-    }
+  // Al hacer clic en una mesa, enviamos el espacio y la mesa seleccionada
+  attendTable(mesaId: number): void {
+    this.router.navigate(['/order-tables', { mesaId, spaceName: this.spaceName, spaceId: this.spaceId }]);
   }
 
   goBack(): void {
-    this.router.navigate(['/sales']);  // Redirige a la página de espacios
+    this.router.navigate(['/sales']);
   }
 }

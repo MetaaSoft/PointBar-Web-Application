@@ -23,7 +23,6 @@ export class LoginService extends BaseService<LoginRequest>{
       );
   }
 
-  // Agregar interceptor para agregar token de autenticación a las peticiones
   private addTokenInterceptor(request: HttpRequest<any>): HttpRequest<any> {
     const token = localStorage.getItem('token');
     if (token) {

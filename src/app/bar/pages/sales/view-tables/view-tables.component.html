@@ -1,7 +1,6 @@
 <div class="tables-container">
   <h2>{{ spaceName }} - Mesas</h2>
 
-  <!-- Botón de regreso -->
   <div class="back-button">
     <button mat-raised-button class="back-btn" color="primary" (click)="goBack()">
       Regresar
@@ -15,7 +14,7 @@
         <mat-card-title>Mesa {{ i + 1 }}</mat-card-title>
       </mat-card-header>
       <mat-card-actions>
-        <button mat-raised-button class="card-btn" (click)="toggleOccupied(i)">
+        <button mat-raised-button class="card-btn" (click)="attendTable(i + 1)">
           {{ table.occupied ? 'Ocupada' : 'Atender' }}
         </button>
       </mat-card-actions>

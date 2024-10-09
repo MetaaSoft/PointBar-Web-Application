@@ -18,7 +18,8 @@ export interface OrderItemRequest {
 export interface OrderResponse {
   id: number;
   tableSpaceId: number;
-  employeeName: string;
+  employeeId: number;
+  businessId: number;
   orderDate: Date;
   status: string;
   items: OrderItemResponse[];

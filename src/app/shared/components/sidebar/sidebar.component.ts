@@ -10,7 +10,7 @@ import {SidebarService} from "../services/sidebar.service";
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent implements OnInit, OnDestroy {
-  logoUrl: string | null = null;  // Logo por defecto
+  logoUrl: string | null = null;
   businessName: string = '';
   private sidebarSubscription: Subscription | null = null;
 
@@ -29,7 +29,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   loadBusinessData(): void {
     this.businessService.getBusinessConfig().subscribe(response => {
-      const data = response.data;  // Asegúrate de acceder a la propiedad 'data' del response
+      const data = response.data;
       this.logoUrl = data.logoUrl ? data.logoUrl : null;
       this.businessName = data.name || '';
     });
@@ -42,8 +42,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   cerrarSesion(): void {
-    // Limpiar datos de sesión si los hay
-    localStorage.removeItem('token'); // O cualquier otro dato de sesión
+    localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 }

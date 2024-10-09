@@ -14,34 +14,35 @@ export class OrdersService extends BaseService<OrderRequest>{
     this.resourceEndpoint = '/orders';
   }
 
-  getOrdersByTableId(tableId: number): Observable<ApiResponse<OrderResponse[]>> {
-    const url = `${this.basePath}${this.resourceEndpoint}/active`;
-    return this.getHttpClient().get<ApiResponse<OrderResponse[]>>(url, {
-      params: new HttpParams().set('tableId', tableId.toString())
-    })
+// Obtener las órdenes de una mesa específica
+  getOrdersByTableSpaceId(tableSpaceId: number, tableId: number): Observable<ApiResponse<OrderResponse[]>> {
+    const url = `${this.basePath}${this.resourceEndpoint}/table/${tableSpaceId}/${tableId}`;
+    return this.getHttpClient().get<ApiResponse<OrderResponse[]>>(url)
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  // Crear una nueva orden
   createOrder(order: OrderRequest): Observable<ApiResponse<OrderResponse>> {
     const url = `${this.basePath}${this.resourceEndpoint}/create`;
     return this.getHttpClient().post<ApiResponse<OrderResponse>>(url, order)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  updateOrderItemStatus(orderId: number, orderItemId: number, delivered: boolean): Observable<ApiResponse<null>> {
-    const url = `${this.basePath}${this.resourceEndpoint}/${orderId}/items/${orderItemId}`;
-    return this.getHttpClient().put<ApiResponse<null>>(url, null, {
-      params: new HttpParams().set('delivered', delivered.toString())
-    })
-      .pipe(retry(2), catchError(this.handleError));
-  }
-
+  // Cerrar una orden
   closeOrder(orderId: number): Observable<ApiResponse<OrderResponse>> {
     const url = `${this.basePath}${this.resourceEndpoint}/${orderId}/close`;
-    return this.getHttpClient().put<ApiResponse<OrderResponse>>(url, null)
+    return this.getHttpClient().put<ApiResponse<OrderResponse>>(url, {})
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  // Actualizar el estado de entrega de un pedido
+  updateOrderItemStatus(orderId: number, itemId: number, delivered: boolean): Observable<ApiResponse<null>> {
+    const url = `${this.basePath}${this.resourceEndpoint}/${orderId}/items/${itemId}?delivered=${delivered}`;
+    return this.getHttpClient().put<ApiResponse<null>>(url, {})
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  // Eliminar un pedido
   deleteOrderItem(orderId: number, itemId: number): Observable<ApiResponse<null>> {
     const url = `${this.basePath}${this.resourceEndpoint}/${orderId}/items/${itemId}`;
     return this.getHttpClient().delete<ApiResponse<null>>(url)

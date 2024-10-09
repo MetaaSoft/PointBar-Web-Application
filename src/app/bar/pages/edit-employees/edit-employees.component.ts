@@ -33,7 +33,7 @@ export class EditEmployeesComponent implements OnInit {
       lastname: this.editForm.get('lastname')?.value,
       email: this.editForm.get('email')?.value,
       phone: this.editForm.get('phone')?.value,
-      password: this.data.password // Agrega la propiedad password
+      password: this.data.password
     };
 
     this.employeeService.updateEmployee(this.data.id, updatedEmployee).subscribe(response => {
