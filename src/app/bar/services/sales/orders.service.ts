@@ -22,7 +22,7 @@ export class OrdersService extends BaseService<OrderRequest>{
   }
 
   // Crear una nueva orden
-    createOrder(order: {
+  createOrder(order: {
         tableSpaceId: number;
         items: { quantity: any; beverageId: any }[]
     }): Observable<ApiResponse<OrderResponse>> {

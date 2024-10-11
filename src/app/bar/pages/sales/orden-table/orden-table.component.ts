@@ -28,13 +28,13 @@ export class OrdenTableComponent implements OnInit{
   dataSource: MatTableDataSource<any>;
   total: number = 0;
   displayedColumns: string[] = ['beverage', 'quantity', 'price', 'subtotal', 'delivered', 'actions'];
+  hasChanges: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private route: ActivatedRoute,
     private orderService: OrdersService,
-    private router: Router,
     private dialog: MatDialog,
     private beverageSelectedService: BeverageselectedService,
     private cdr: ChangeDetectorRef
@@ -61,18 +61,21 @@ export class OrdenTableComponent implements OnInit{
 
   getOrdersForTable(): void {
     this.orderService.getOrdersByTableSpaceId(this.spaceId, this.mesaId).subscribe(
-      (response: any) => {
+      (response: ApiResponse<OrderResponse[]>) => {
         console.log('Orders fetched from backend:', response.data);
-        const ordersWithItems = response.data.flatMap((order: any) =>
+        this.orders = response.data.flatMap((order: OrderResponse) =>
           order.items.map((item: any) => ({
             ...item,
             orderId: order.id,
-            subtotal: item.quantity * item.beveragePrice
+            subtotal: item.quantity * item.beveragePrice,
+            isNew: false,
+            isModified: false,
+            isDeleted: false
           }))
         );
-        this.orders = ordersWithItems;
         this.dataSource.data = this.orders;
         this.calculateTotal();
+        this.hasChanges = false;
         console.log('Orders set in component:', this.orders);
         this.cdr.detectChanges();
       },
@@ -91,38 +94,53 @@ export class OrdenTableComponent implements OnInit{
       beveragePrice: beverage.price,
       quantity: 1,
       delivered: false,
-      subtotal: beverage.price
+      subtotal: beverage.price,
+      isNew: true,
+      isModified: false,
+      isDeleted: false
     };
 
     this.orders.push(newOrderItem);
     this.dataSource.data = this.orders;
     this.calculateTotal();
+    this.hasChanges = true;
     this.cdr.detectChanges();
   }
 
   updateQuantity(item: any): void {
     item.subtotal = item.quantity * item.beveragePrice;
+    item.isModified = true;
     this.calculateTotal();
+    this.hasChanges = true;
     this.cdr.detectChanges();
   }
 
   toggleDelivered(item: any): void {
     item.delivered = !item.delivered;
+    item.isModified = true;
+    this.hasChanges = true;
     this.cdr.detectChanges();
   }
 
   deleteOrder(item: any): void {
-    const index = this.orders.indexOf(item);
-    if (index !== -1) {
-      this.orders.splice(index, 1);
-      this.dataSource.data = this.orders;
-      this.calculateTotal();
-      this.cdr.detectChanges();
+    if (item.isNew) {
+      const index = this.orders.indexOf(item);
+      if (index !== -1) {
+        this.orders.splice(index, 1);
+      }
+    } else {
+      item.isDeleted = true;
     }
+    this.dataSource.data = this.orders.filter(order => !order.isDeleted);
+    this.calculateTotal();
+    this.hasChanges = true;
+    this.cdr.detectChanges();
   }
 
   calculateTotal(): void {
-    this.total = this.orders.reduce((acc, item) => acc + item.subtotal, 0);
+    this.total = this.orders
+      .filter(item => !item.isDeleted)
+      .reduce((acc, item) => acc + item.subtotal, 0);
   }
 
   openAgregarPedidoDialog(): void {
@@ -158,20 +176,63 @@ export class OrdenTableComponent implements OnInit{
   }
 
   confirmarOrden(): void {
-    const orderRequest: OrderRequest = {
+    if (!this.hasChanges) {
+      console.log('No hay cambios para confirmar');
+      return;
+    }
+
+    const orderItems: OrderItemRequest[] = this.orders
+      .filter(item => item.isModified || item.isNew)
+      .map(item => ({
+        beverageId: item.beverageId,
+        quantity: item.quantity,
+        delivered: item.delivered
+      }));
+
+    const request = {
       tableSpaceId: this.spaceId,
       tableId: this.mesaId,
-      items: this.orders.map(item => ({
-        beverageId: item.beverageId,
-        quantity: item.quantity
-      }))
+      items: orderItems
     };
 
-    this.orderService.createOrder(orderRequest).subscribe(response => {
-      console.log('Orden creada con éxito:', response);
-      this.getOrdersForTable(); // Refresh orders after creating a new one
-    }, error => {
-      console.error('Error al crear la orden:', error);
-    });
+    this.orderService.createOrder(request).subscribe(
+      (response: ApiResponse<OrderResponse>) => {
+        console.log('Orden actualizada con éxito:', response);
+
+        // Actualizar el estado de entrega de los pedidos
+        this.orders.forEach(item => {
+          if (item.isModified && item.delivered) {
+            this.orderService.updateOrderItemStatus(item.orderId, item.id, item.delivered).subscribe(
+              () => {
+                console.log('Estado de entrega actualizado con éxito');
+              },
+              error => {
+                console.error('Error al actualizar el estado de entrega:', error);
+              }
+            );
+          }
+        });
+
+        // Eliminar los pedidos eliminados
+        this.orders.forEach(item => {
+          if (item.isDeleted) {
+            this.orderService.deleteOrderItem(item.orderId, item.id).subscribe(
+              () => {
+                console.log('Pedido eliminado con éxito');
+              },
+              error => {
+                console.error('Error al eliminar el pedido:', error);
+              }
+            );
+          }
+        });
+
+        this.getOrdersForTable(); // Refresh orders after updating
+        this.hasChanges = false;
+      },
+      error => {
+        console.error('Error al actualizar la orden:', error);
+      }
+    );
   }
 }
