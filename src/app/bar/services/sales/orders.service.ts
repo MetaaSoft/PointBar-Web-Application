@@ -22,7 +22,10 @@ export class OrdersService extends BaseService<OrderRequest>{
   }
 
   // Crear una nueva orden
-  createOrder(order: OrderRequest): Observable<ApiResponse<OrderResponse>> {
+    createOrder(order: {
+        tableSpaceId: number;
+        items: { quantity: any; beverageId: any }[]
+    }): Observable<ApiResponse<OrderResponse>> {
     const url = `${this.basePath}${this.resourceEndpoint}/create`;
     return this.getHttpClient().post<ApiResponse<OrderResponse>>(url, order)
       .pipe(retry(2), catchError(this.handleError));
