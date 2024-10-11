@@ -108,7 +108,7 @@ td button {
 }
 
 td button:hover {
-  background-color: #f5f5f5;
+  background-color: #333333;
 }
 
 .mat-paginator {

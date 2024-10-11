@@ -169,9 +169,14 @@ export class OrdenTableComponent implements OnInit{
   }
 
   confirmarVenta(): void {
+    // Se cierra la orden al confirmar el cobro
     this.orderService.closeOrder(this.mesaId).subscribe(response => {
       console.log('Venta confirmada y cerrada', response);
-      this.getOrdersForTable(); // Refresh orders after closing
+
+      // Refrescar la tabla de órdenes
+      this.getOrdersForTable(); // Esto vuelve a cargar las órdenes y asegura que el estado de la mesa esté actualizado
+    }, error => {
+      console.error('Error al cerrar la venta:', error);
     });
   }
 

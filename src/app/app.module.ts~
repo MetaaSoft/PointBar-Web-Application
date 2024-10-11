@@ -49,7 +49,6 @@ import { BeveragesTableComponent } from './bar/pages/sales/beverages-table/bever
 import {BeverageselectedService} from "./bar/services/beverageselected/beverageselected.service";
 import { CollectMoneyDialogComponent } from './bar/pages/sales/collect-money-dialog/collect-money-dialog.component';
 import { SaleshistoryComponent } from './bar/pages/sales-history/saleshistory/saleshistory.component';
-import {SalesHistoryService} from "./bar/services/sales-history/salesHistory.service";
 
 @NgModule({
   declarations: [
@@ -117,7 +116,6 @@ import {SalesHistoryService} from "./bar/services/sales-history/salesHistory.ser
     CategoriesService,
     OrdersService,
     BeverageselectedService,
-    SalesHistoryService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

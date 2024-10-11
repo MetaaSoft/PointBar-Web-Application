@@ -1,0 +1,26 @@
+<h2>Historial de Ventas</h2>
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="employeeName">
+    <mat-header-cell *matHeaderCellDef style="background-color: #333333; color: #fff;">Empleado</mat-header-cell>
+    <mat-cell *matCellDef="let history">{{ history.employeeName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="tableName">
+    <mat-header-cell *matHeaderCellDef style="background-color: #333333; color: #fff;">Mesa</mat-header-cell>
+    <mat-cell *matCellDef="let history">{{ history.tableName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="amount">
+    <mat-header-cell *matHeaderCellDef style="background-color: #333333; color: #fff;">Monto</mat-header-cell>
+    <mat-cell *matCellDef="let history">{{ history.amount | currency }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="saleDate">
+    <mat-header-cell *matHeaderCellDef style="background-color: #333333; color: #fff;">Fecha</mat-header-cell>
+    <mat-cell *matCellDef="let history">{{ history.saleDate | date:'short' }}</mat-cell>
+    <!--Formato de fecha: Month/Day/Year --->
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

@@ -1,8 +1,10 @@
-<h2 mat-dialog-title>Confirmar Cobro</h2>
+<h2 mat-dialog-title>Confirmación de Pago</h2>
 <mat-dialog-content>
-  <p>¿El pago ha sido realizado?</p>
+  <p style="font-size: 18px; color: #333;">¿El pago ha sido realizado?</p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>No</button>
-  <button mat-button (click)="confirmarCobro()" color="primary">Sí</button>
+  <button mat-button mat-dialog-close style="background-color: #ccc; color: #666;">No</button>
+  <button mat-button (click)="confirmarCobro()" style="background-color: #3f51b5; color: #fff;">
+    <mat-icon>check_circle</mat-icon> Sí
+  </button>
 </mat-dialog-actions>

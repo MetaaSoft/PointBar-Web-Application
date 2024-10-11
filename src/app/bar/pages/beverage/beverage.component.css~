@@ -44,10 +44,10 @@ mat-cell button {
 div div button {
   margin-bottom: 30px;
   color: white;
-  background: #757de8;
+  background: #5c5c5c;
   border-radius: 10px;
 }
 
 div div button:hover {
-  background: #5a61c2;
+  background: #727272;
 }

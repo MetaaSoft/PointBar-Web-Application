@@ -10,6 +10,7 @@ import {BeverageComponent} from "./bar/pages/beverage/beverage.component";
 import {SalesComponent} from "./bar/pages/sales/sales.component";
 import {ViewTablesComponent} from "./bar/pages/sales/view-tables/view-tables.component";
 import {OrdenTableComponent} from "./bar/pages/sales/orden-table/orden-table.component";
+import {SaleshistoryComponent} from "./bar/pages/sales-history/saleshistory/saleshistory.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
     path: "dashboard",
     title: "Dashboard",
     component: DashboardComponent
+  },
+  {
+    path: "sales-history",
+    title: "Sales History",
+    component: SaleshistoryComponent
   },
   {
     path: "sales",

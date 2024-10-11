@@ -2,7 +2,9 @@
   <h2>Agregar Pedido</h2>
   <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>
+        <mat-icon>local_drink</mat-icon> Nombre
+      </mat-header-cell>
       <mat-cell *matCellDef="let beverage"> {{ beverage.name }} </mat-cell>
     </ng-container>
 

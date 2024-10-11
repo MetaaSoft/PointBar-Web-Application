@@ -4,32 +4,32 @@
 
   <mat-table [dataSource]="beverages" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef style="background-color: #333333; color: #fff;">Nombre</mat-header-cell>
       <mat-cell *matCellDef="let beverage">{{ beverage.name }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef>Descripción</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef style="background-color: #333333; color: #fff;">Descripción</mat-header-cell>
       <mat-cell *matCellDef="let beverage">{{ beverage.description }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="categoryName">
-      <mat-header-cell *matHeaderCellDef>Categoría</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef style="background-color: #333333; color: #fff;">Categoría</mat-header-cell>
       <mat-cell *matCellDef="let beverage">{{ beverage.categoryName }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="price">
-      <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef style="background-color: #333333; color: #fff;">Precio</mat-header-cell>
       <mat-cell *matCellDef="let beverage">{{ beverage.price }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef style="background-color: #333333; color: #fff;">Acciones</mat-header-cell>
       <mat-cell *matCellDef="let beverage">
-        <button mat-raised-button (click)="openBeverageDialog(beverage)">
+        <button mat-raised-button (click)="openBeverageDialog(beverage)" style="background-color: #ccc; color: #666;">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-raised-button (click)="deleteBeverage(beverage.id)">
+        <button mat-raised-button (click)="deleteBeverage(beverage.id)" style="background-color: #ccc; color: #666;">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>
