@@ -14,14 +14,12 @@ export class BusinessService extends BaseService<BusinessRequest>{
     this.resourceEndpoint = '/business';
   }
 
-  // Obtener la configuración del negocio
   getBusinessConfig(): Observable<any> {
     const businessUrl = `${this.basePath}${this.resourceEndpoint}/find`;
     return this.getHttpClient().get<any>(businessUrl)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  // Actualizar los datos del negocio
   updateBusiness(formData: FormData): Observable<any> {
     const businessUrl = `${this.basePath}${this.resourceEndpoint}/update`;
     return this.getHttpClient().put<any>(businessUrl, formData);

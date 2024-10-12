@@ -169,12 +169,9 @@ export class OrdenTableComponent implements OnInit{
   }
 
   confirmarVenta(): void {
-    // Se cierra la orden al confirmar el cobro
     this.orderService.closeOrder(this.mesaId).subscribe(response => {
       console.log('Venta confirmada y cerrada', response);
-
-      // Refrescar la tabla de órdenes
-      this.getOrdersForTable(); // Esto vuelve a cargar las órdenes y asegura que el estado de la mesa esté actualizado
+      this.getOrdersForTable();
     }, error => {
       console.error('Error al cerrar la venta:', error);
     });
@@ -204,7 +201,6 @@ export class OrdenTableComponent implements OnInit{
       (response: ApiResponse<OrderResponse>) => {
         console.log('Orden actualizada con éxito:', response);
 
-        // Actualizar el estado de entrega de los pedidos
         this.orders.forEach(item => {
           if (item.isModified && item.delivered) {
             this.orderService.updateOrderItemStatus(item.orderId, item.id, item.delivered).subscribe(
@@ -218,7 +214,6 @@ export class OrdenTableComponent implements OnInit{
           }
         });
 
-        // Eliminar los pedidos eliminados
         this.orders.forEach(item => {
           if (item.isDeleted) {
             this.orderService.deleteOrderItem(item.orderId, item.id).subscribe(
@@ -232,7 +227,7 @@ export class OrdenTableComponent implements OnInit{
           }
         });
 
-        this.getOrdersForTable(); // Refresh orders after updating
+        this.getOrdersForTable();
         this.hasChanges = false;
       },
       error => {

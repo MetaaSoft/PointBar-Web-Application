@@ -45,9 +45,8 @@ export class DashboardService {
     const dailySales: { [key: string]: number } = {};
 
     salesHistory.forEach(sale => {
-      console.log('Processing sale:', sale);  // Log each sale for debugging
+      console.log('Processing sale:', sale);
 
-      // Check for all possible date field names
       const saleDate = sale.saleDate || sale.orderDate || sale.date;
 
       if (!saleDate) {
@@ -61,16 +60,13 @@ export class DashboardService {
         return;
       }
 
-      // Calculate total revenue
       totalRevenue += sale.amount;
 
-      // Check if the sale is from today
       if (saleDateObj.toDateString() === today.toDateString()) {
         salesToday += sale.amount;
         tablesServedToday.add(sale.tableName);
       }
 
-      // Aggregate daily sales
       const dateKey = saleDateObj.toISOString().split('T')[0];
       dailySales[dateKey] = (dailySales[dateKey] || 0) + sale.amount;
     });

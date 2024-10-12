@@ -28,12 +28,11 @@ export class BaseService<T> {
   }
 
   handleError(error: HttpErrorResponse) {
-    // Default error handling
     if (error.error instanceof ErrorEvent) {
       console.error(`An error occurred: ${error.error.message}`);
     } else {
       console.log(`Backend returned code ${error.status}, body was ${error.error}`);
-      console.error('Full error object:', error); // Log the entire error object for more details
+      console.error('Full error object:', error);
     }
     return throwError(() => new Error('Something happened with request, please try again later.'));
   }
