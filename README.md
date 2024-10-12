@@ -1,5 +1,8 @@
 # README - Frontend del Sistema de Gestión de Bares
 
+![Log In](https://i.postimg.cc/prg7kH7z/login-Web-App.png)
+<br>
+
 ## Descripción del Proyecto
 
 Este frontend está diseñado para complementar el sistema de gestión de bares, proporcionando una interfaz intuitiva y moderna. Utiliza **Angular 17** junto con **Angular Material** para los componentes de la interfaz y **Chart.js** para la visualización de datos en el dashboard.
@@ -36,6 +39,16 @@ src/
 - **Angular 17**: Framework principal para construir aplicaciones web.
 - **Angular Material**: Biblioteca de componentes UI que proporciona una serie de componentes predefinidos y estilos consistentes basados en Material Design.
 - **Chart.js**: Biblioteca utilizada para crear gráficos interactivos en el dashboard, permitiendo visualizar datos relevantes sobre ventas y estadísticas.
+
+![Register](https://i.postimg.cc/c4tG3Djf/register-Web-App.png)
+
+![Dashboard](https://i.postimg.cc/sXHbQS4n/dashboard-Web-App.png)
+
+![Gestión de mesas](https://i.postimg.cc/sfNRvFnV/mesas-Web-App.png)
+
+![Stock de bebbidas](https://i.postimg.cc/mgxfyYfJ/stock-Web-App.png)
+
+![Atender a clientes](https://i.postimg.cc/9MQvQ1ZR/atender-Web-App.png)
 
 ## Instalación
 
