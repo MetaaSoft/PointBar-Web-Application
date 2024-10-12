@@ -29,7 +29,6 @@ export class BeveragesTableComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  // Obtener las bebidas del servicio
   getBeverages(): void {
     this.beverageService.getBeverages().subscribe(
       (response: any) => {
@@ -42,7 +41,6 @@ export class BeveragesTableComponent implements OnInit, AfterViewInit {
     );
   }
 
-  // Seleccionar una bebida y enviarla al componente principal
   agregarPedido(beverage: any): void {
     console.log('Selected beverage:', beverage);
     if (!beverage || !beverage.id) {

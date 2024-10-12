@@ -29,9 +29,9 @@ export interface OrderItemResponse {
   id: number;
   orderId: number;
   beverageId: number;
-  beverageName: string;  // Añadimos el nombre de la bebida
-  beveragePrice: number; // Añadimos el precio de la bebida
+  beverageName: string;
+  beveragePrice: number;
   quantity: number;
   delivered: boolean;
-  subtotal: number;  // Ya calculado en el backend como quantity * price
+  subtotal: number;
 }

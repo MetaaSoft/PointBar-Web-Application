@@ -9,7 +9,7 @@
 }
 
 .table-free {
-  background-color: lightgreen !important; /* Sobrescribe el fondo de mesa libre, porque no sirve modificar Angular Material */
+  background-color: lightgreen !important;
 }
 
 .table-occupied {
