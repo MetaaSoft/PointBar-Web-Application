@@ -1,5 +1,5 @@
 <h2>Historial de Ventas</h2>
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 91%;">
   <ng-container matColumnDef="employeeName">
     <mat-header-cell *matHeaderCellDef style="background-color: #333333; color: #fff;">Empleado</mat-header-cell>
     <mat-cell *matCellDef="let history">{{ history.employeeName }}</mat-cell>

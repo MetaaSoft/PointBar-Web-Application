@@ -1,0 +1,5 @@
+mat-table {
+  width: 91%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}

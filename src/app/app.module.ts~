@@ -6,7 +6,7 @@ import { LoginComponent } from './core/auth/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {MatIcon, MatIconModule} from "@angular/material/icon";
-import {CommonModule} from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
@@ -49,6 +49,9 @@ import { BeveragesTableComponent } from './bar/pages/sales/beverages-table/bever
 import {BeverageselectedService} from "./bar/services/beverageselected/beverageselected.service";
 import { CollectMoneyDialogComponent } from './bar/pages/sales/collect-money-dialog/collect-money-dialog.component';
 import { SaleshistoryComponent } from './bar/pages/sales-history/saleshistory/saleshistory.component';
+import {SalesHistoryService} from "./bar/services/sales-history/salesHistory.service";
+import {DashboardService} from "./bar/services/dashboard/dashboard.service";
+import { BaseChartDirective } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -71,41 +74,43 @@ import { SaleshistoryComponent } from './bar/pages/sales-history/saleshistory/sa
     CollectMoneyDialogComponent,
     SaleshistoryComponent,
   ],
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatListModule,
-    HttpClientModule,
-    MatCardModule,
-    MatDialogModule,
-    MatCheckboxModule,
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    MatFormField,
-    MatIcon,
-    CommonModule,
-    MatTable,
-    MatPaginator,
-    MatGridTile,
-    MatGridList,
-    MatGridListModule,
-    MatHeaderRow,
-    MatRow,
-    MatHeaderCell,
-    MatCell,
-    MatTableModule,
-    MatPaginatorModule,
-    MatChip,
-  ],
+    imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatListModule,
+        HttpClientModule,
+        MatCardModule,
+        MatDialogModule,
+        MatCheckboxModule,
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatIcon,
+        CommonModule,
+        MatTable,
+        MatPaginator,
+        MatGridTile,
+        MatGridList,
+        MatGridListModule,
+        MatHeaderRow,
+        MatRow,
+        MatHeaderCell,
+        MatCell,
+        MatTableModule,
+        MatPaginatorModule,
+        MatChip,
+        BaseChartDirective,
+        NgOptimizedImage
+    ],
   providers: [
     LoginService,
     RegisterService,
@@ -116,6 +121,8 @@ import { SaleshistoryComponent } from './bar/pages/sales-history/saleshistory/sa
     CategoriesService,
     OrdersService,
     BeverageselectedService,
+    SalesHistoryService,
+    DashboardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

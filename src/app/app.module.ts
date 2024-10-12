@@ -50,6 +50,8 @@ import {BeverageselectedService} from "./bar/services/beverageselected/beverages
 import { CollectMoneyDialogComponent } from './bar/pages/sales/collect-money-dialog/collect-money-dialog.component';
 import { SaleshistoryComponent } from './bar/pages/sales-history/saleshistory/saleshistory.component';
 import {SalesHistoryService} from "./bar/services/sales-history/salesHistory.service";
+import {DashboardService} from "./bar/services/dashboard/dashboard.service";
+import { BaseChartDirective } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -106,6 +108,7 @@ import {SalesHistoryService} from "./bar/services/sales-history/salesHistory.ser
     MatTableModule,
     MatPaginatorModule,
     MatChip,
+    BaseChartDirective
   ],
   providers: [
     LoginService,
@@ -118,6 +121,7 @@ import {SalesHistoryService} from "./bar/services/sales-history/salesHistory.ser
     OrdersService,
     BeverageselectedService,
     SalesHistoryService,
+    DashboardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

@@ -20,10 +20,4 @@ export class SalesHistoryService extends BaseService<SalesHistoryResponse> {
     return this.getHttpClient().get<ApiResponse<any[]>>(url)
       .pipe(retry(2), catchError(this.handleError));
   }
-
-  getSalesHistoryForEmployee(employeeId: number): Observable<ApiResponse<any[]>> {
-    const url = `${this.basePath}${this.resourceEndpoint}/employee/${employeeId}`;
-    return this.getHttpClient().get<ApiResponse<any[]>>(url)
-      .pipe(retry(2), catchError(this.handleError));
-  }
 }

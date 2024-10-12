@@ -20,7 +20,7 @@
 
     <ng-container matColumnDef="price">
       <mat-header-cell *matHeaderCellDef style="background-color: #333333; color: #fff;">Precio</mat-header-cell>
-      <mat-cell *matCellDef="let beverage">S/. {{ beverage.price }}</mat-cell>
+      <mat-cell *matCellDef="let beverage">{{ beverage.price }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="image">
