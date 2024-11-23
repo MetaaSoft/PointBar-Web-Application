@@ -1,4 +1,4 @@
-export const environment ={
+export const environment = {
   production: false,
-  serverBasePath: "http://localhost:8082/api/v1"
+  serverBasePath: "https://pointbar-api-production.up.railway.app/api/v1"
 }
